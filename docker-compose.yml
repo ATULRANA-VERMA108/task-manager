@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  db:
+    image: postgres:15-alpine
+    container_name: taskmanager-db
+    environment:
+      POSTGRES_DB: taskdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d taskdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - task-network
+
+  # 2. Spring Boot Backend API Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: taskmanager-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/taskdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgrespassword
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - task-network
+
+  # 3. Frontend Web Server Service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taskmanager-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - task-network
+
+volumes:
+  pgdata:
+
+networks:
+  task-network:
+    driver: bridge

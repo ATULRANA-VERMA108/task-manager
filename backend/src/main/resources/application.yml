@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: task-manager
+  profiles:
+    active: dev
+
+---
+
+# Development Profile (H2 In-Memory)
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:taskdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+
+# Docker Profile (PostgreSQL Database)
+spring:
+  config:
+    activate:
+      on-profile: docker
+  datasource:
+    url: jdbc:postgresql://db:5432/taskdb
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgrespassword
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false

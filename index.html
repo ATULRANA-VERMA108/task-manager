@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Task Management Suite</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .portal-hero {
+      text-align: center;
+      padding: 5rem 1rem 3rem 1rem;
+      position: relative;
+    }
+    
+    .portal-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .portal-subtitle {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      font-weight: 300;
+    }
+    
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .module-card {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .module-card svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .module-card:hover svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .module-card.dashboard-card:hover {
+      box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.25), var(--shadow-neon);
+    }
+    
+    .module-card.board-card:hover {
+      box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.25), var(--shadow-neon-cyan);
+    }
+    
+    .module-card.admin-card:hover {
+      box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.25), 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+    
+    .module-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+    
+    .module-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+    
+    .module-link-text {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .dashboard-card .module-link-text { color: var(--primary); }
+    .board-card .module-link-text { color: var(--secondary); }
+    .admin-card .module-link-text { color: var(--success); }
+    
+    .module-card:hover .module-link-text {
+      gap: 0.75rem;
+    }
+    
+    .system-stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin-top: 5rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-val {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    
+    .stat-lbl {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <header class="portal-hero">
+      <h1 class="portal-title">Enterprise <span class="gradient-text">Task Suite</span></h1>
+      <p class="portal-subtitle">A highly performant, visual task workspace structured to coordinate complex workflows, system analytics, and administrative controls.</p>
+    </header>
+    
+    <main>
+      <div class="modules-grid">
+        
+        <!-- User Dashboard Module -->
+        <a href="user-dashboard/index.html" class="glass-card module-card dashboard-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#primary-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+          <div class="module-name">User Dashboard</div>
+          <p class="module-desc">Gain insights into your productivity. Monitor personal workspace metrics, track deadlines, check activity streams, and analyze output using our interactive productivity graph.</p>
+          <div class="module-link-text">
+            Launch Dashboard 
+            <svg style="width:16px; height:16px; margin:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+        
+        <!-- Kanban Task Board Module -->
+        <a href="task-board/index.html" class="glass-card module-card board-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#secondary-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="3" x2="8" y2="21"></line>
+            <line x1="16" y1="3" x2="16" y2="21"></line>
+            <rect x="2" y="5" width="4" height="6" rx="1" fill="rgba(6, 182, 212, 0.1)"></rect>
+            <rect x="10" y="8" width="4" height="8" rx="1" fill="rgba(124, 58, 237, 0.1)"></rect>
+            <rect x="18" y="4" width="4" height="5" rx="1" fill="rgba(6, 182, 212, 0.1)"></rect>
+          </svg>
+          <div class="module-name">Interactive Kanban Board</div>
+          <p class="module-desc">Manage project workflows dynamically. Create, edit, and organize tasks with fluid drag-and-drop operations, search filters, and detail checklists.</p>
+          <div class="module-link-text">
+            Open Kanban Board
+            <svg style="width:16px; height:16px; margin:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+        
+        <!-- Admin & Analytics Panel Module -->
+        <a href="admin-panel/index.html" class="glass-card module-card admin-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#success-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+            <circle cx="12" cy="12" r="3" fill="rgba(16, 185, 129, 0.1)"></circle>
+          </svg>
+          <div class="module-name">Admin & Analytics</div>
+          <p class="module-desc">Administer workspace rosters, manage team directory roles, monitor real-time system performance feeds, and view resource allocation analytics.</p>
+          <div class="module-link-text">
+            Access Admin Console
+            <svg style="width:16px; height:16px; margin:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+        
+      </div>
+      
+      <section class="system-stats">
+        <div class="stat-item">
+          <div class="stat-val">28</div>
+          <div class="stat-lbl">Active Members</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">142</div>
+          <div class="stat-lbl">Tasks Closed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">99.9%</div>
+          <div class="stat-lbl">System Uptime</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Reusable Gradients Definition -->
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="secondary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="success-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </svg>
+
+</body>
+</html>

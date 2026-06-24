@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Enterprise Task Suite</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <a href="../index.html" class="nav-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#nav-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+        <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+        <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+        <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+      </svg>
+      <span>TaskSuite</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Dashboard</a>
+      <a href="../task-board/index.html" class="nav-link">Task Board</a>
+      <a href="../admin-panel/index.html" class="nav-link">Admin Console</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- Welcome Header -->
+    <header class="welcome-header glass-card">
+      <div class="welcome-text">
+        <h2 id="greeting-msg">Welcome back, Team Member</h2>
+        <p>Here is your work summary for today. Let's close some tasks!</p>
+      </div>
+      <div class="clock-display">
+        <div id="live-time">18:00:00</div>
+        <div id="live-date" class="date-sub">June 24, 2026</div>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="glass-card stat-card">
+        <div class="stat-icon-wrapper purple-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-number" id="total-tasks-stat">12</div>
+          <div class="stat-label">Assigned Tasks</div>
+        </div>
+      </div>
+      
+      <div class="glass-card stat-card">
+        <div class="stat-icon-wrapper cyan-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="6"></line>
+            <line x1="12" y1="18" x2="12" y2="22"></line>
+            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+            <line x1="2" y1="12" x2="6" y2="12"></line>
+            <line x1="18" y1="12" x2="22" y2="12"></line>
+            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-number" id="progress-tasks-stat">4</div>
+          <div class="stat-label">In Progress</div>
+        </div>
+      </div>
+
+      <div class="glass-card stat-card">
+        <div class="stat-icon-wrapper green-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-number" id="completed-tasks-stat">8</div>
+          <div class="stat-label">Completed</div>
+        </div>
+      </div>
+
+      <div class="glass-card stat-card">
+        <div class="stat-icon-wrapper yellow-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-number">92%</div>
+          <div class="stat-label">On-Time Rate</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Panels -->
+    <div class="dashboard-panels">
+      
+      <!-- Chart Panel -->
+      <div class="glass-card panel-card chart-panel">
+        <h3 class="panel-title">Weekly Productivity</h3>
+        <p class="panel-subtitle">Tasks completed per day over the last week</p>
+        <div class="chart-container">
+          <!-- Premium Custom SVG Line Chart -->
+          <svg class="productivity-svg" viewBox="0 0 600 240">
+            <!-- Grid Lines -->
+            <line x1="50" y1="30" x2="550" y2="30" class="chart-grid"></line>
+            <line x1="50" y1="80" x2="550" y2="80" class="chart-grid"></line>
+            <line x1="50" y1="130" x2="550" y2="130" class="chart-grid"></line>
+            <line x1="50" y1="180" x2="550" y2="180" class="chart-grid"></line>
+            
+            <!-- X & Y Axes -->
+            <line x1="50" y1="180" x2="550" y2="180" class="chart-axis"></line>
+            
+            <!-- SVG Paths for data line and area -->
+            <path id="chart-area" d="M 50 180" fill="url(#chart-area-grad)" opacity="0.15"></path>
+            <path id="chart-line" d="M 50 180" fill="none" stroke="url(#chart-line-grad)" stroke-width="4" stroke-linecap="round"></path>
+            
+            <!-- Hover highlight vertical line -->
+            <line id="hover-line" x1="0" y1="30" x2="0" y2="180" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4,4" style="display:none;"></line>
+            
+            <!-- Circles for data points -->
+            <g id="chart-points"></g>
+            
+            <!-- Labels -->
+            <!-- Y-Axis labels -->
+            <text x="35" y="34" class="chart-label-y">10</text>
+            <text x="35" y="84" class="chart-label-y">5</text>
+            <text x="35" y="134" class="chart-label-y">2</text>
+            <text x="35" y="184" class="chart-label-y">0</text>
+            
+            <!-- X-Axis Labels (Day names) -->
+            <g id="chart-labels-x"></g>
+          </svg>
+          
+          <!-- Custom Tooltip -->
+          <div id="chart-tooltip" class="chart-tooltip" style="display: none;">
+            <div class="tooltip-day">Monday</div>
+            <div class="tooltip-val">5 Tasks</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Side Panels -->
+      <div class="side-panels">
+        
+        <!-- Checklist Panel -->
+        <div class="glass-card panel-card checklist-panel">
+          <h3 class="panel-title">Immediate Action Items</h3>
+          <div class="checklist-items" id="dashboard-checklist">
+            <!-- Dynamic checklist -->
+          </div>
+        </div>
+        
+        <!-- Activity Log Panel -->
+        <div class="glass-card panel-card activity-panel">
+          <h3 class="panel-title">Activity Stream</h3>
+          <div class="activity-feed" id="dashboard-activities">
+            <!-- Dynamic logs -->
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+
+  <!-- SVG Gradients -->
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <linearGradient id="nav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="chart-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="chart-area-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+  </svg>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

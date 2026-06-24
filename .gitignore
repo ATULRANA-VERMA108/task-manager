@@ -1,0 +1,26 @@
+# Maven target directory
+backend/target/
+*.class
+
+# Eclipse projects
+.classpath
+.project
+.settings/
+bin/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Log files
+*.log
+
+# Docker database volume
+pgdata/
+
+# OS specific files
+.DS_Store
+Thumbs.db
