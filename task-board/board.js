@@ -1,6 +1,6 @@
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:8080/api'
-  : 'https://taskmanager-backend-latest.onrender.com/api'; // Replace with your actual Render backend Web Service URL after deployment
+  : 'https://task-manager-backend-mwe1.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
   initBoard();
